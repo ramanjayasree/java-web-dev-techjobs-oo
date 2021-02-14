@@ -19,10 +19,10 @@ public class JobTest {
 
    @Test
  public void testSettingJobId(){
-       Job obj = new Job();
+       Job job = new Job();
        Job job1 = new Job();
 
-       assertTrue(job1.getId() - Job.getId() == 1);
+       assertTrue(job1.getId() - job.getId() == 1);
 
  }
 
