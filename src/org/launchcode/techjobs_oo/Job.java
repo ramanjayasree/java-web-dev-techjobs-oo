@@ -47,6 +47,32 @@ public class Job {
         return Objects.hash(id, name, employer, location, positionType, coreCompetency);
     }
 
+    public String toString(Job job){
+        String jobName =  job.name.isEmpty()? "No Data Availabe": job.name;
+        String jobEmp =  job.employer.getValue().isEmpty()? "No Data Availabe": job.employer.getValue();
+        String jobLoc =  job.location.getValue().isEmpty()? "No Data Availabe": job.location.getValue();
+        String jobPosTy =  job.positionType.getValue().isEmpty()? "No Data Availabe": job.positionType.getValue();
+        String jobCoreComp = job.coreCompetency.getValue().isEmpty()? "No Data Availabe": job.coreCompetency.getValue();
+
+       if ( job.name.isEmpty() &&  job.employer.getValue().isEmpty() && job.location.getValue().isEmpty()
+                  && job.positionType.getValue().isEmpty() && job.coreCompetency.getValue().isEmpty()){
+           return "OOPS! This job does not seem to exist.";
+
+       }
+       else{
+            return "\n" +
+                    "ID: " + job.id + "\n"+
+                    "Name: " + jobName  + "\n" +
+                    "Employer: " + jobEmp + "\n" +
+                    "Location: " + jobLoc + "\n" +
+                    "Position Type: " + jobPosTy + "\n" +
+                    "Core Competency: " + jobCoreComp + "\n" ;
+
+        }
+
+    }
+
+
 
     // TODO: Add getters for each field EXCEPT nextId. Add setters for each field EXCEPT nextID
     //  and id.

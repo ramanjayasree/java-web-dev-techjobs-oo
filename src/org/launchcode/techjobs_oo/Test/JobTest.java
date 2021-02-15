@@ -1,14 +1,14 @@
 package org.launchcode.techjobs_oo.Test;
 
 import org.junit.Before;
+import org.junit.Test;
 import org.launchcode.techjobs_oo.*;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
 import static org.junit.Assert.*;
 
 public class JobTest {
 
-//   Job job;
+   Job job1;
+   Job job2;
 //   Job job1;
 //   @Before
 //    public void testTwoObjects(){
@@ -17,35 +17,42 @@ public class JobTest {
 //   }
 
 
+@Before
+public void createJob() {
+    job1 = new Job("Product tester", new Employer("ACME"), new Location("Desert"),
+            new PositionType("Quality control"), new CoreCompetency("Persistence"));
+    job2 = new Job("Front End Developer", new Employer("MC"), new Location("Ocean"),
+            new PositionType("Developement"), new CoreCompetency("Programming"));
+
+}
+
    @Test
  public void testSettingJobId(){
-       Job job = new Job();
-       Job job1 = new Job();
-
-       assertTrue(job1.getId() - job.getId() == 1);
-
+         assertFalse(job1.getId() - job2.getId() == 1);
  }
 
  @Test
  public void testJobConstructorSetsAllFields(){
-       Job job = new Job("Product tester", new Employer("ACME"), new Location("Desert"),
-               new PositionType("Quality control"), new CoreCompetency("Persistence"));
-assertEquals("Product tester",job.getName());
-assertEquals("ACME",job.getEmployer().getValue());
-assertEquals("Desert", job.getLocation().getValue());
-assertEquals("Quality control",job.getPositionType().getValue());
-assertEquals("Persistence",job.getCoreCompetency().getValue());
+assertEquals("Product tester",job1.getName());
+assertEquals("ACME",job1.getEmployer().getValue());
+assertEquals("Desert", job1.getLocation().getValue());
+assertEquals("Quality control",job1.getPositionType().getValue());
+assertEquals("Persistence",job1.getCoreCompetency().getValue());
 
-//assertEquals(true, job instanceof(Job));
+//assertTrue(job1 instanceof(new Job()));
 
  }
 
  @Test
     public void testJobsForEquality(){
-       Job job2 = new Job();
-       Job job3 = new Job();
 
-       job2.setEmployer(new Employer("ACME"));
+
+       System.out.println("job:" + job1.getName().toString() + "\n");
+     //System.out.println("job3:" + job3.getName().toString());
+
+
+
+       /*job2.setEmployer(new Employer("ACME"));
        job2.setCoreCompetency(new CoreCompetency("Java"));
        job2.setLocation(new Location("St.Louis"));
        job2.setName("FrontEnd Developer");
@@ -56,10 +63,17 @@ assertEquals("Persistence",job.getCoreCompetency().getValue());
        job3.setLocation(new Location("St.Louis"));
        job3.setName("FrontEnd Developer");
        job3.setPositionType(new PositionType("Developer"));
-
+*/
        //assertEquals(false, job2.equals(job3));
 
-       assertFalse(job2.equals(job3));
+       assertFalse(job1.equals(job2));
 
  }
+
+ @Test
+    public void testToString(){
+       assertFalse(job1.toString().startsWith("\n"));
+       assertFalse(job1.toString().endsWith("\n"));
+ }
+
 }
